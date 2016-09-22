@@ -20,10 +20,12 @@
   <title></title>
 </head>
 <body>
-  <%= erb :'partials/_header' %>
+  <%= erb :'partials/_navbar' %>
+  <div class="container">
+      <%= erb :'partials/_header' %>
+      <%= yield %>
 
-  <%= yield %>
-
-  <%= erb :'partials/_footer' %>
+    <%= erb :'partials/_footer' %>
+  </div>
 </body>
 </html>
