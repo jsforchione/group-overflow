@@ -1,11 +1,14 @@
 <div class='container'>
   <h2><%= "Hi, #{current_user.username}" %></h2>
-
-
-<!-- 
   <a href='/questions'>Home</a>
-  <form action='/sessions' method='POST'>
+  
+  <p>
+    <%= @user.questions %><br>
+    <%= @user.answers %>
+  </p>
+
+  <!-- <form action='/sessions' method='POST'>
     <input type='hidden' name='_method' value='delete'>
     <input type='submit' value='Log Out'>
-  </form> -->
+  </form> --> 
 </div>

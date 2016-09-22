@@ -1,9 +1,13 @@
 <div class='container'>
   <h1>Sign Up</h1>
+  <% if @errors %>
+    <p><%= "#{@errors[0]}" %>
+    </p>
+    <% end %>
   <form action='/users' method='POST'>
     Username:<input type='text' name='user[username]'>
     Email:<input type='text' name='user[email]'>
-    Password:<input type='password' name='password'>
+    Password:<input type='password' name='user[password]'>
     <input type='submit' value='Submit'>
   </form>
 
