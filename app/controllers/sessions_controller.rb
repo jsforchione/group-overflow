@@ -7,7 +7,7 @@ post '/sessions' do
 end
 
 delete '/sessions' do
-  sessions.delete(:user) if session[:user]
+  session.delete(:user) if session[:user]
   redirect '/questions'
 end
 
