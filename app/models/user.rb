@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   include BCrypt
 
@@ -28,5 +30,4 @@ class User < ActiveRecord::Base
       return nil 
     end 
   end 
-
 end
