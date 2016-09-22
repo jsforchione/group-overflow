@@ -1,1 +1,11 @@
-list of questions
+<h1>Questions</h1>
+<div id="question-list ">
+	<% @questions.each do |question| %>
+		<ul>
+			<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+		</ul>
+	<% end %>
+</div>
+
+
+
