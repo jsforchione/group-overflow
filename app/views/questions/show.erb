@@ -2,6 +2,9 @@
 <h3><%= @question.title %></h3>
 <p><%= @question.text %></p>	
 
+<!-- comments for the question -->
+<!-- use comment partial here -->
+
 <a href="/questions/<%= @question.id%>/edit">Edit</a>
 
 <!-- Delete button -->
@@ -21,4 +24,6 @@
 
 <% @answers.each do |answer| %>
 		<p><%= answer.text %></p>
+		<!-- comments for the answer -->
+		<!-- use comment partial here -->
 <% end %>
