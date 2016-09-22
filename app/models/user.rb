@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 	has_many :votes
 	has_many :comments
 
-  validates :email, :username, uniqueness: true
+  validates :username, uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
   validates :password_hash, :email, :username, presence: true 
 
   def password 
