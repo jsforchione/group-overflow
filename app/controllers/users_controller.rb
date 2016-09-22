@@ -26,8 +26,8 @@ post '/users' do
   @user = User.new(params[:user])
   if @user.save
     redirect "/users/#{@user.id}"
-  else
-    @errors = ["Invalid"]
+  else 
+    @errors = ["Username or Email already exists"]
     erb :'users/new'
   end
 end
