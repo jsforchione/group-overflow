@@ -17,6 +17,13 @@ get '/questions/:id/edit' do
   erb :'questions/edit'
 end 
 
+put '/questions/:id' do
+  p "*" * 80
+  @question = Question.find(params[:id])
+  @question.update(params[:question])
+  redirect "/questions/#{@question.id}"
+end
+
 post '/questions' do 
   @question = Question.new(params[:question])
 
