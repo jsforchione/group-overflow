@@ -9,6 +9,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
+  @answers = @question.answers.all
   erb :'questions/show'
 end
 
@@ -18,7 +19,6 @@ get '/questions/:id/edit' do
 end
 
 put '/questions/:id' do
-  p "*" * 80
   @question = Question.find(params[:id])
   @question.update(params[:question])
   redirect "/questions/#{@question.id}"
@@ -41,3 +41,13 @@ delete '/questions/:id' do
   @question.destroy
   redirect "/questions"
 end
+
+post '/questions/:id' do
+  @question = Question.find(params[:id])
+  @answers = @question.answers.create(params[:answer])
+  redirect "/questions/#{params[:id]}"
+end 
+
+
+
+

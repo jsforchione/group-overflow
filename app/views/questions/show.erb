@@ -2,10 +2,28 @@
 <h3><%= @question.title %></h3>
 <p><%= @question.text %></p>	
 
+<!-- comments for the question -->
+<!-- use comment partial here -->
+
 <a href="/questions/<%= @question.id%>/edit">Edit</a>
 
 <!-- Delete button -->
-<form action="/questions/<%= @question.id%>" method="post">
+<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete">
 </form>
+<br>
+<br>
+
+<!-- put the answers for the question -->
+<form id="Answers" action="/questions/<%= @question.id %>" method="post">
+	<p>Answer:</p>
+	<textarea name="answer[text]"></textarea><br>
+	<input type="submit" value="Post">
+</form>
+
+<% @answers.each do |answer| %>
+		<p><%= answer.text %></p>
+		<!-- comments for the answer -->
+		<!-- use comment partial here -->
+<% end %>
