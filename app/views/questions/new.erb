@@ -1,1 +1,8 @@
-new question
+<h2>new question</h2>
+<form action="/questions" method="post">
+	<p>Title:</p>	
+	<input type="text" name="question[title]">
+	<p>Content:</p>
+	<textarea name="question[text]"></textarea><br>
+	<input type="submit" value="Post">
+</form>
