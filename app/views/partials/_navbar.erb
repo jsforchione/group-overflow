@@ -15,11 +15,11 @@
       <ul class="nav navbar-nav">
         <li>
           <% if current_user %>
-            <a href="/users/#{current_user.id}"><%= current_user.username %>
+            <a href="/users/<%= current_user.id %>"><%= current_user.username %>
             </a>
             <form action="/sessions" method="POST">
               <input type="hidden" name="_method" method="DELETE">
-              <input type="submit" name="Log out">
+              <input type="submit" value="Log out">
             </form>
           <% else %>
             <a href="/users/new">sign up</a><a href="/sessions/new">log in</a>
