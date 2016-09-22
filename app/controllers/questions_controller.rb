@@ -34,7 +34,6 @@ post '/questions' do
     erb :'questions/new'
     #erb with errors
   end 
-
 end 
 
 delete '/questions/:id' do 
@@ -42,6 +41,15 @@ delete '/questions/:id' do
   @question.destroy
   redirect "/questions"
 end
+
+post '/questions/:id' do
+  @question = Question.find(params[:id])
+  @answers = @question.answers.create(params[:answer])
+  redirect "/questions/#{params[:id]}"
+end 
+
+
+
 
 
 
