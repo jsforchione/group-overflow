@@ -18,7 +18,7 @@ Question.all.each do |question|
   question.answers.create(text: text)
 
   3.times do |x|
-    comment = Faker::Hipster.words(5)
+    comment = Faker::Hipster.sentence(5)
     question.comments.create(text: comment)
   end
 end
