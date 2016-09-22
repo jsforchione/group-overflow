@@ -1,6 +1,7 @@
+
 post '/sessions' do
-  user = User.authenticate(params[:email])
-  redirect "/sessions" unless user
+  user = User.authenticate(params[:email], params[:password])
+  redirect "/sessions/new" unless user
   session["user"] = user.id
   redirect "/users/#{user.id}"
 end
