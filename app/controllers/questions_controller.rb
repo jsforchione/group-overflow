@@ -1,22 +1,25 @@
-get '/questions' do 
+get '/questions' do
   @questions = Question.all
   erb :'questions/index'
-end 
+end
 
-get '/questions/new' do 
+get '/questions/new' do
   erb :'questions/new'
-end 
+end
 
-get '/questions/:id' do 
+get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'questions/show'
-end 
+end
 
-get '/questions/:id/edit' do 
+get '/questions/:id/edit' do
   @question = Question.find(params[:id])
   erb :'questions/edit'
-end 
+end
 
+<<<<<<< HEAD
+post '/questions' do
+=======
 put '/questions/:id' do
   p "*" * 80
   @question = Question.find(params[:id])
@@ -25,16 +28,20 @@ put '/questions/:id' do
 end
 
 post '/questions' do 
+>>>>>>> eaf9dff596ac5c96f7b82c2c7cda8ca71ce33a01
   @question = Question.new(params[:question])
 
   if @question.save
     redirect "/questions/#{@question.id}"
-  else 
+  else
     @errors = ["One or more fields are invalid"]
     erb :'questions/new'
     #erb with errors
-  end 
+  end
 
+<<<<<<< HEAD
+end
+=======
 end 
 
 delete '/questions/:id' do 
@@ -47,3 +54,4 @@ end
 
 
 
+>>>>>>> eaf9dff596ac5c96f7b82c2c7cda8ca71ce33a01

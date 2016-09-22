@@ -3,22 +3,41 @@ get '/users' do
   erb :'users/index'
 end
 
-get '/users/new' do 
+get '/users/new' do
   erb :'users/new'
-end 
+end
+
+get '/users/new' do
+  erb :'users/new'
+end
+
+get '/users/:id/edit' do
+  @user = User.find(params[:id])
+  erb :'users/edit'
+end
 
 get '/users/:id' do
   redirect '/sessions/new' unless current_user
-  redirect '/questions' unless session['user'] == params[:id].to_i
+  redirect '/questions' unless session['user'] ==params[:id].to_i
   erb :'/users/show'
 end
 
-post '/users' do 
+post '/users' do
   @user = User.new(params[:user])
   if @user.save
     redirect "/users/#{@user.id}"
-  else 
+  else
     @errors = ["Invalid"]
     erb :'users/new'
-  end 
-end 
+  end
+end
+
+  put '/users/:id' do
+  @user = User.find(params[:id])
+  if params[:password] == ""
+    @user.update(username: params[:username], email: params[:email], password_hash: @user.password_hash)
+  else
+    @user.update(username: params[:username], email: params[:email], password: params[:password])
+  end
+  redirect "/users/#{@user.id}"
+end
