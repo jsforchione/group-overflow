@@ -9,3 +9,10 @@
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete">
 </form>
+
+<!-- put the answers for the question -->
+
+
+<% @answers.each do |answer| %>
+		<p><%= answer.text %></p>
+<% end %>
