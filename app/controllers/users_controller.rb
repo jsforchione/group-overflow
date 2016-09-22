@@ -8,6 +8,17 @@ get '/users/new' do
 end
 
 get '/users/:id' do
-  @user = User.find(params[:id])
-  erb :'users/show'
+  redirect '/sessions/new' unless current_user
+  redirect '/questions' unless session['user'] ==params[:id].to_i
+  erb :'/users/show'
+end
+
+post '/users' do
+  @user = User.new(params[:user])
+  if @user.save
+    redirect "/users/#{@user.id}"
+  else
+    @errors = ["Invalid"]
+    erb :'users/new'
+  end
 end
