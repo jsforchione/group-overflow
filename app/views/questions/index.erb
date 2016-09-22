@@ -2,7 +2,7 @@
 <div id="question-list ">
 	<% @questions.each do |question| %>
 		<ul>
-			<li><%= question.title %></li>
+			<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
 		</ul>
 	<% end %>
 </div>

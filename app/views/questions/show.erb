@@ -3,3 +3,7 @@
 <p><%= @question.text %></p>	
 
 <a href="/questions/<%= @question.id%>/edit">Edit</a>
+<form action="/questions/<%= @question.id%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
