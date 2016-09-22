@@ -17,9 +17,6 @@ get '/questions/:id/edit' do
   erb :'questions/edit'
 end
 
-<<<<<<< HEAD
-post '/questions' do
-=======
 put '/questions/:id' do
   p "*" * 80
   @question = Question.find(params[:id])
@@ -28,7 +25,6 @@ put '/questions/:id' do
 end
 
 post '/questions' do 
->>>>>>> eaf9dff596ac5c96f7b82c2c7cda8ca71ce33a01
   @question = Question.new(params[:question])
 
   if @question.save
@@ -38,10 +34,6 @@ post '/questions' do
     erb :'questions/new'
     #erb with errors
   end
-
-<<<<<<< HEAD
-end
-=======
 end 
 
 delete '/questions/:id' do 
@@ -49,9 +41,3 @@ delete '/questions/:id' do
   @question.destroy
   redirect "/questions"
 end
-
-
-
-
-
->>>>>>> eaf9dff596ac5c96f7b82c2c7cda8ca71ce33a01
