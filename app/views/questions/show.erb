@@ -1,8 +1,4 @@
-<h3><%= @question.title %></h3>
-
-<p><%= @question.text %></p>	
-<p><%= @question.user_id %></p>
-
+<h3><%= @question.title %></h3>	
 <p><%= @question.text %></p>
 <form method="post" action='/questions/<%= @question.id  %>/votes'>
 	<button type="submit">Up</button>
@@ -34,7 +30,7 @@
 		</form>
 
 		<li><%= comment.text %></li>
-		
+
 		<form id="Delete question comment" action="/questions/<%= @question.id%>/comment/<%= comment.id %>" method="post">
 					<input type="hidden" name="_method" value="delete">
 					<input type="submit" value="Delete">
