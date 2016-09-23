@@ -3,18 +3,21 @@
 <p><%= @question.text %></p>
 <form method="post" action='/questions/<%= @question.id  %>/votes'>
 	<button type="submit">Up</button>
+</form>
 	<%= @question.votes.count %>
+<form method="post" action='/questions/<%= @question.id  %>/downvotes'>
+	<input type="hidden" name="_method" value="delete">
 	<button type="submit">Down</button>
 </form>
 
-<% if current_user %>
+<% if current_user == @question.user_id %>
 
 	<a href="/questions/<%= @question.id%>/edit">Edit</a>
 <% end %>
 
 <!-- Delete button -->
 
-<% if current_user %>
+<% if current_user == @question.user_id  %>
 	<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="Delete">
@@ -34,7 +37,7 @@
 
 		<li><%= comment.text %></li>
 
-		<% if current_user %>
+		<% if current_user == @question.user_id %>
 		<form id="Delete question comment" action="/questions/<%= @question.id%>/comment/<%= comment.id %>" method="post">
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit" value="Delete">

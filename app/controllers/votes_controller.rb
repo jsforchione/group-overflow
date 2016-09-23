@@ -34,3 +34,10 @@ post '/questions/:question_id/answers/:answer_id/comments/:id/votes' do
 redirect "/questions/#{@question.id}"
 end
 
+delete '/questions/:id/downvotes' do 
+  @question = Question.find(params[:id])
+  @question.votes.last.destroy unless @question.votes.empty?
+
+  redirect "/questions/#{@question.id}"
+end
+
