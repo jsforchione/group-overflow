@@ -14,7 +14,11 @@ gem 'rake'
 
 gem 'shotgun', '~>0.9.1'
 
+gem 'acts_as_votable', '~> 0.10.0'
+
 gem 'awesome_print'
+
+gem 'pry'
 
 gem 'bcrypt'
 

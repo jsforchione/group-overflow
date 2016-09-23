@@ -1,8 +1,17 @@
-
 <h3><%= @question.title %></h3>
+
 <p><%= @question.text %></p>	
 <p><%= @question.user_id %></p>
-<% if session[:user_id] == @question.user_id %>
+
+<p><%= @question.text %></p>
+<form method="post" action='/questions/<%= @question.id  %>/votes'>
+	<button type="submit">Up</button>
+	<%= @question.votes.count %>
+	<button type="submit">Down</button>
+</form>
+
+<% if session["user"] %>
+
 	<a href="/questions/<%= @question.id%>/edit">Edit</a>
 <% end %>
 
@@ -18,12 +27,19 @@
 <!-- comments for the question -->
 <% @question.comments.each do |comment| %>
 	<ul>
-		<li><%= comment.text  %> 
-			<form id="Delete question comment" action="/questions/<%= @question.id%>/comment/<%= comment.id %>" method="post">
+		<form method="post" action='/questions/<%= @question.id  %>/comment/<%= comment.id  %>/votes'>
+			<button type="submit">Up</button>
+			<%= comment.votes.count %>
+		<button type="submit">Down</button>
+		</form>
+
+		<li><%= comment.text %></li>
+		
+		<form id="Delete question comment" action="/questions/<%= @question.id%>/comment/<%= comment.id %>" method="post">
 					<input type="hidden" name="_method" value="delete">
 					<input type="submit" value="Delete">
 				</form>
-		</li>
+
 	</ul>
 <% end %>
 
@@ -40,10 +56,20 @@
 <!-- put the answers for the question -->
 <% @answers.each do |answer| %>
 	<ul>
+		<form method="post" action='/questions/<%= @question.id  %>/answers/<%= answer.id %>/votes'>
+			<button type="submit">Up</button>
+			<%= answer.votes.count %>
+		<button type="submit">Down</button>
+		</form>
 		<li><%= answer.text %></li>
 		<!-- list of the comments -->
 		<% answer.comments.each do |comment| %>
 			<ul>
+				<form method="post" action='/questions/<%= @question.id  %>/answers/<%= answer.id %>/comments/<%= comment.id %>/votes'>
+			<button type="submit">Up</button>
+			<%= comment.votes.count %>
+			<button type="submit">Down</button>
+		</form>
 				<li><%= comment.text %></li>
 			</ul>
 		<% end %>
@@ -53,8 +79,8 @@
 				<p>Comment:</p>
 				<textarea name="comment[text]"></textarea><br>
 				<input type="submit" value="Comment">
-			</form>	
-		<% end %>		
+			</form>
+		<% end %>
 	</ul>
 <% end %>
 

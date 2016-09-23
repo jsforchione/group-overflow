@@ -10,6 +10,8 @@ end
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.answers.all
+  @comment = Comment.find(params[:id])
+  @answer = Answer.find(params[:id])
 
   erb :'questions/show'
 end
@@ -26,6 +28,7 @@ put '/questions/:id' do
   redirect "/questions/#{@question.id}"
 end
 
+
 post '/questions' do 
   @user = current_user
   @question = @user.questions.build(params[:question])
@@ -37,9 +40,9 @@ post '/questions' do
     erb :'questions/new'
     #erb with errors
   end
-end 
+end
 
-delete '/questions/:id' do 
+delete '/questions/:id' do
   @question = Question.find(params[:id])
   @question.destroy
   redirect "/questions"
@@ -50,7 +53,7 @@ post '/questions/:id' do
   @question_comment = @question.comments.create(params[:comment])
 
   redirect "/questions/#{params[:id]}"
-end 
+end
 
 delete '/questions/:question_id/comment/:id' do
   @question = Question.find(params[:question_id])
