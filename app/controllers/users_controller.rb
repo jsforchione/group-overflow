@@ -18,7 +18,7 @@ end
 
 get '/users/:id' do
   redirect '/sessions/new' unless current_user
-  redirect '/questions' unless session['user'] ==params[:id].to_i
+  redirect '/questions' unless logged_in?
   erb :'/users/show'
 end
 
