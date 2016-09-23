@@ -15,18 +15,23 @@
 	</ul>
 <% end %>
 
-<a href="/questions/<%= @question.id%>/edit">Edit</a>
+<% if session["user"] %>
+	<a href="/questions/<%= @question.id%>/edit">Edit</a>
+<% end %>
 
 <!-- Delete button -->
-<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete">
-</form>
+
+<% if session["user"] %>
+	<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="Delete">
+	</form>
+<% end %>
 <br>
 <br>
 
 <!-- put the answers for the question -->
-<form id="Answers" action="/questions/<%= @question.id %>" method="post">
+<form id="Answers" action="/questions/<%= @question.id %>/answers" method="post">
 	<p>Answer:</p>
 	<textarea name="answer[text]"></textarea><br>
 	<input type="submit" value="Post">
