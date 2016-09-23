@@ -4,6 +4,7 @@ get '/questions' do
 end
 
 get '/questions/new' do
+  redirect 'questions' unless logged_in?
   erb :'questions/new'
 end
 
