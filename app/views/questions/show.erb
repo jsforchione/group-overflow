@@ -1,3 +1,4 @@
+<h2>Question:</h2>
 <h3><%= @question.title %></h3>	
 <p><%= @question.text %></p>
 <form method="post" action='/questions/<%= @question.id  %>/votes'>
@@ -6,21 +7,23 @@
 	<button type="submit">Down</button>
 </form>
 
-<% if session["user"] %>
+<% if current_user %>
 
 	<a href="/questions/<%= @question.id%>/edit">Edit</a>
 <% end %>
 
 <!-- Delete button -->
 
-<% if session["user"] %>
+<% if current_user %>
 	<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="Delete">
 	</form>
 <% end %>
+<br>
 
 <!-- comments for the question -->
+<p><b>Question comments:</b></p>
 <% @question.comments.each do |comment| %>
 	<ul>
 		<form method="post" action='/questions/<%= @question.id  %>/comment/<%= comment.id  %>/votes'>
@@ -31,11 +34,12 @@
 
 		<li><%= comment.text %></li>
 
+		<% if current_user %>
 		<form id="Delete question comment" action="/questions/<%= @question.id%>/comment/<%= comment.id %>" method="post">
-					<input type="hidden" name="_method" value="delete">
-					<input type="submit" value="Delete">
-				</form>
-
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Delete">
+		</form>
+		<% end %>
 	</ul>
 <% end %>
 
@@ -49,6 +53,7 @@
 <br>
 <br>
 
+<h2>Answers</h2>
 <!-- put the answers for the question -->
 <% @answers.each do |answer| %>
 	<ul>
@@ -59,6 +64,7 @@
 		</form>
 		<li><%= answer.text %></li>
 		<!-- list of the comments -->
+		<p><b>Answer comments:</b></p>
 		<% answer.comments.each do |comment| %>
 			<ul>
 				<form method="post" action='/questions/<%= @question.id  %>/answers/<%= answer.id %>/comments/<%= comment.id %>/votes'>
@@ -70,6 +76,7 @@
 			</ul>
 		<% end %>
 		<!-- comments for the answer -->
+
 		<% if current_user %>
 			<form id="Answer-comments" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
 				<p>Comment:</p>
