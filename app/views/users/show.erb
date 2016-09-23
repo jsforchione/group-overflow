@@ -2,7 +2,16 @@
   <h2><%= "Hi, #{current_user.username}" %></h2>
   <a href='/questions'>Home</a>
   <p>
-    <%= @user.questions %><br>
-    <%= @user.answers %>
+  	<ul>
+    	<% @user.questions.each do |question| %><br>
+	    	<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+   		<% end %>
+   	</ul>
+
+   	<ul>
+	    <% @user.answers.each do |answer| %>
+	    	<li><%= answer.title %></li>
+	    <% end %>
+    </ul>
   </p>
 </div>
