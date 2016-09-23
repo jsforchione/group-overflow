@@ -46,6 +46,10 @@
   font-size: 2.5em;
 }
 
+#logo > a:hover {
+  text-decoration: none;
+}
+
 .light {
   font-weight: 200;
   color: #222222;
