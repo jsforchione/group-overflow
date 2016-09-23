@@ -1,6 +1,5 @@
 <div class='container'>
   <h2><%= "Hi, #{current_user.username}" %></h2>
-  <a href='/questions'>Home</a>
   <p>
   	<ul>
     	<% @user.questions.each do |question| %><br>

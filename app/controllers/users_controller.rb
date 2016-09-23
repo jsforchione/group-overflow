@@ -7,16 +7,13 @@ get '/users/new' do
   erb :'users/new'
 end
 
-get '/users/new' do
-  erb :'users/new'
-end
-
 get '/users/:id/edit' do
   @user = User.find(params[:id])
   erb :'users/edit'
 end
 
 get '/users/:id' do
+  @user = User.find(params[:id])
   redirect '/sessions/new' unless current_user
   redirect '/questions' unless logged_in?
   erb :'/users/show'
