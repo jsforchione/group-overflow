@@ -19,7 +19,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav userlinks">
-        <% if current_user %>
+        <% if logged_in? %>
           <li>
             <img src="/gravatar.png" width="30" height="30">
             <a href="/users/<%= current_user.id %>"><%= current_user.username %>
@@ -27,7 +27,7 @@
           </li>
           <li>    
             <form action="/sessions" method="POST">
-              <input type="hidden" name="_method" method="DELETE">
+              <input type="hidden" name="_method" value="DELETE">
               <input class="logout" type="submit" value="log out">
             </form>
           <li>   
