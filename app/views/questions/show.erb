@@ -1,8 +1,8 @@
 
 <h3><%= @question.title %></h3>
 <p><%= @question.text %></p>	
-
-<% if session["user"] %>
+<p><%= @question.user_id %></p>
+<% if session[:user_id] == @question.user_id %>
 	<a href="/questions/<%= @question.id%>/edit">Edit</a>
 <% end %>
 
@@ -18,19 +18,22 @@
 <!-- comments for the question -->
 <% @question.comments.each do |comment| %>
 	<ul>
-		<li><%= comment.text %></li>
+		<li><%= comment.text  %> 
+			<form id="Delete question comment" action="/questions/<%= @question.id%>/comment/<%= comment.id %>" method="post">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="Delete">
+				</form>
+		</li>
 	</ul>
 <% end %>
 
-<% if session["user"] %>
+<% if current_user %>
 	<form id="Question-comments" action="/questions/<%= @question.id %>" method="post">
 		<p>Comment:</p>
 		<textarea name="comment[text]"></textarea><br>
 		<input type="submit" value="Comment">
 	</form>
 <% end %>
-
-
 <br>
 <br>
 
@@ -45,7 +48,7 @@
 			</ul>
 		<% end %>
 		<!-- comments for the answer -->
-		<% if session["user"] %>
+		<% if current_user %>
 			<form id="Answer-comments" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
 				<p>Comment:</p>
 				<textarea name="comment[text]"></textarea><br>
@@ -55,7 +58,7 @@
 	</ul>
 <% end %>
 
-<% if session["user"] %>
+<% if current_user %>
 		<form id="Answers" action="/questions/<%= @question.id %>/answers" method="post">
 			<p>Answer:</p>
 			<textarea name="answer[text]"></textarea><br>
