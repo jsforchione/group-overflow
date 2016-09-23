@@ -2,36 +2,39 @@
 <h3><%= @question.title %></h3>
 <p><%= @question.text %></p>	
 
-<!-- comments for the question -->
-<form id="Question-comments" action="/questions/<%= @question.id %>" method="post">
-	<p>Comment:</p>
-	<textarea name="comment[text]"></textarea><br>
-	<input type="submit" value="Comment">
-</form>
+<% if session["user"] %>
+	<a href="/questions/<%= @question.id%>/edit">Edit</a>
+<% end %>
 
+<!-- Delete button -->
+
+<% if session["user"] %>
+	<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="Delete">
+	</form>
+<% end %>
+
+<!-- comments for the question -->
 <% @question.comments.each do |comment| %>
 	<ul>
 		<li><%= comment.text %></li>
 	</ul>
 <% end %>
 
-<a href="/questions/<%= @question.id%>/edit">Edit</a>
+<% if session["user"] %>
+	<form id="Question-comments" action="/questions/<%= @question.id %>" method="post">
+		<p>Comment:</p>
+		<textarea name="comment[text]"></textarea><br>
+		<input type="submit" value="Comment">
+	</form>
+<% end %>
 
-<!-- Delete button -->
-<form id="Delete question" action="/questions/<%= @question.id%>" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete">
-</form>
+
 <br>
 <br>
 
 <!-- put the answers for the question -->
-<form id="Answers" action="/questions/<%= @question.id %>" method="post">
-	<p>Answer:</p>
-	<textarea name="answer[text]"></textarea><br>
-	<input type="submit" value="Post">
-</form>
-
 <% @answers.each do |answer| %>
 	<ul>
 		<li><%= answer.text %></li>
@@ -42,13 +45,20 @@
 			</ul>
 		<% end %>
 		<!-- comments for the answer -->
-		<form id="Answer-comments" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-			<p>Comment:</p>
-			<textarea name="comment[text]"></textarea><br>
-			<input type="submit" value="Comment">
-		</form>	
-
-		
-				
+		<% if session["user"] %>
+			<form id="Answer-comments" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+				<p>Comment:</p>
+				<textarea name="comment[text]"></textarea><br>
+				<input type="submit" value="Comment">
+			</form>	
+		<% end %>		
 	</ul>
 <% end %>
+
+<% if session["user"] %>
+		<form id="Answers" action="/questions/<%= @question.id %>/answers" method="post">
+			<p>Answer:</p>
+			<textarea name="answer[text]"></textarea><br>
+			<input type="submit" value="Post">
+		</form>
+	<% end %>
