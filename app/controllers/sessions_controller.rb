@@ -13,7 +13,7 @@ post '/sessions' do
   end
 end
 
-delete '/sessions/:id' do
-  session[:user_id] = nil if session[:user_id]
+delete '/sessions' do
+  log_out if logged_in?
   redirect '/questions'
 end
