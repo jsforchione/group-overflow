@@ -1,0 +1,9 @@
+<div>
+   <% if !@errors.nil? %>
+    <% @errors.each do |error| %>
+      <ul>
+        <li><%= error %></li>
+      </ul>
+    <% end %>
+   <% end %>
+</div>

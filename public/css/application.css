@@ -1,0 +1,71 @@
+.exchange {
+  margin: 5px;
+}
+
+.userlinks {
+  display: inline-block;
+}
+
+.userlinks > li > a {
+  display: inline-block;
+}
+
+.mainnavs > ul > li {
+  display: inline-block;
+  list-style: none;
+  margin-left: 1px;
+  margin-right: 1px;
+  line-height: 1.3;
+  font-size: 100%;
+}
+
+.nav-buttons > li > a  {
+  padding: 10px 20px;
+  color: #FFF;
+  background: #9fa6ad;
+  font-size: 0.4em;
+  line-height: 1.3;
+}
+
+.nav-buttons li a:hover {
+  text-decoration: none;
+  background: #f69c55;
+}
+
+.logout {
+  color: #9d9d9d;
+  background: #222222;
+  border: none;
+  padding: 15px;
+}
+
+.logout:hover {
+  color: white; 
+}
+#logo {
+  font-size: 2.5em;
+}
+
+.light {
+  font-weight: 200;
+  color: #222222;
+}
+.bold {
+  font-weight: 800;
+}
+
+.footerlinks {
+  color: #FFF;
+  list-style: none;
+  padding: auto auto;
+}
+
+.footerlinks > li  { 
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.footerlinks > li > a:hover {
+  text-decoration: none;
+  color: #FFF;
+}
