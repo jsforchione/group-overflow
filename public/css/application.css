@@ -1,5 +1,16 @@
 .exchange {
-  margin: 5px;
+  margin: auto;
+}
+
+.navbar-brand > p {
+  color: #FFF;
+  font-weight: 100;
+  font-family: Helvetica, sans-serif;
+}
+
+.blue {
+  color: #07c;
+  font-weight: 500;
 }
 
 .userlinks {
