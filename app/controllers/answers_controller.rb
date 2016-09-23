@@ -1,8 +1,11 @@
 post '/questions/:id/answers' do
 	@question = Question.find(params[:id])
-  @question.answers.create(params[:answer])
-
-  redirect "/questions/#{params[:id]}"
+  @answer = @question.answers.create(params[:answer])
+  if request.xhr?
+  	erb :"partials/_answer_list", locals: {answer: @answer}, layout: false 
+  else
+	  redirect "/questions/#{params[:id]}"
+	 end
 end
 
 post '/questions/:question_id/answers/:id' do

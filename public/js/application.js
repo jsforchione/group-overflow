@@ -1,7 +1,23 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+$(function() {
+	$("#Answers").submit(function(e){
+		e.preventDefault();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+		var formTarget = $(this);
+		var formContent = formTarget.serialize();
+		var formAction = formTarget.attr("action");
+		var formMethod = formTarget.attr("method");
+
+		$.ajax({
+			url: formAction,
+			type: formMethod,
+			data: formContent
+		})
+		.done(function(data) {
+			console.log(data)
+			var target = $("#answer-list");
+			target.append(data);
+			$("textarea[id='answer-text']").val("")
+		});
+	});
 });
+

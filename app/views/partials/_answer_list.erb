@@ -1,0 +1,33 @@
+<ul>
+		<form method="post" action='/questions/<%= @question.id  %>/answers/<%= answer.id %>/votes'>
+			<button type="submit">Up</button>
+			<%= answer.votes.count %>
+		<button type="submit">Down</button>
+		</form>
+		
+		<li><%= answer.text %></li>
+		<!-- list of the comments -->
+		
+		<p><b>Answer comments:</b></p>
+		<% answer.comments.each do |comment| %>
+	
+	<ul>
+		<form method="post" action='/questions/<%= @question.id  %>/answers/<%= answer.id %>/comments/<%= comment.id %>/votes'>
+			<button type="submit">Up</button>
+			<%= comment.votes.count %>
+			<button type="submit">Down</button>
+		</form>
+		<li><%= comment.text %></li>
+	</ul>
+<% end %>
+		<!-- comments for the answer -->
+
+	<% if current_user %>
+		<form id="Answer-comments" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+			<p>Comment:</p>
+			<textarea name="comment[text]"></textarea><br>
+			<input type="submit" value="Comment">
+		</form>
+	
+	<% end %>
+</ul>
