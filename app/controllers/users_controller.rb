@@ -25,6 +25,7 @@ end
 post '/users' do
   @user = User.new(params[:user])
   if @user.save
+    session[:user] = @user
     redirect "/users/#{@user.id}"
   else 
     @errors = ["Username or Email already exists"]
@@ -32,7 +33,7 @@ post '/users' do
   end
 end
 
-  put '/users/:id' do
+put '/users/:id' do
   @user = User.find(params[:id])
   if params[:password] == ""
     @user.update(username: params[:username], email: params[:email], password_hash: @user.password_hash)

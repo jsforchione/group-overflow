@@ -7,20 +7,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/questions"><p>Stack Exchange</p></a>
+      
+      <a class="navbar-brand" href="/questions">
+        <p>
+          <img class="exchange" src="/se-icon.png" width="25" height="25">
+          <span>Hack Exchange</span>
+        </p>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>
-          <% if current_user %>
-            <a href="/users/#{current_user.id}"><%= current_user.username %>
+      <ul class="nav navbar-nav userlinks">
+        <% if current_user %>
+          <li>
+            <img src="/gravatar.png" width="30" height="30">
+            <a href="/users/<%= current_user.id %>"><%= current_user.username %>
             </a>
-          <% else %>
+          </li>
+          <li>    
+            <form action="/sessions" method="POST">
+              <input type="hidden" name="_method" method="DELETE">
+              <input class="logout" type="submit" value="Log out">
+            </form>
+          <li>   
+        <% else %>
+          <li>
             <a href="/users/new">sign up</a><a href="/sessions/new">log in</a>
-          <% end %>
-        </li>
+          </li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">help<span class="caret"></span></a>
           <ul class="dropdown-menu">
