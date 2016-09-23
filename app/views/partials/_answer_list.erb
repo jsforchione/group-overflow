@@ -2,9 +2,9 @@
 		<form method="post" action='/questions/<%= @question.id  %>/answers/<%= answer.id %>/votes'>
 			<button type="submit">Up</button>
 			<%= answer.votes.count %>
-		<button type="submit">Down</button>
+			<button type="submit">Down</button>
 		</form>
-		
+
 		<li><%= answer.text %></li>
 		<!-- list of the comments -->
 		

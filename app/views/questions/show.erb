@@ -31,9 +31,13 @@
 	<ul>
 		<form method="post" action='/questions/<%= @question.id  %>/comment/<%= comment.id  %>/votes'>
 			<button type="submit">Up</button>
-			<%= comment.votes.count %>
-		<button type="submit">Down</button>
 		</form>
+			<%= comment.votes.count %>
+		<form method="post" action='/questions/<%= @question.id  %>/comment/<%= comment.id  %>/downvotes'>
+			<input type="hidden" name="_method" value="delete">
+			<button type="submit">Down</button>
+		</form>
+		
 
 		<li><%= comment.text %></li>
 

@@ -41,3 +41,18 @@ delete '/questions/:id/downvotes' do
   redirect "/questions/#{@question.id}"
 end
 
+delete '/questions/:question_id/comment/:id/downvotes' do
+  @question = Question.find(params[:question_id])
+  @comment = @question.comments.find(params[:id])
+  @comment.votes.last.destroy unless @comment.votes.empty?
+
+  redirect "/questions/#{@question.id}"
+end
+
+# delete '/questions/:question_id/answers/:id/downvotes' do 
+#   question = Question.find(params[:question_id])
+#   @answer = @question.answers.find(params[:id])
+#   @answer.votes.last.destroy unless @answer.votes.empty?
+
+#   redirect "/questions/#{@question.id}"
+# end
