@@ -3,7 +3,17 @@
 <p><%= @question.text %></p>	
 
 <!-- comments for the question -->
-<!-- use comment partial here -->
+<form id="Question-comments" action="/questions/<%= @question.id %>" method="post">
+	<p>Comment:</p>
+	<textarea name="comment[text]"></textarea><br>
+	<input type="submit" value="Comment">
+</form>
+
+<% @question.comments.each do |comment| %>
+	<ul>
+		<li><%= comment.text %></li>
+	</ul>
+<% end %>
 
 <a href="/questions/<%= @question.id%>/edit">Edit</a>
 
@@ -23,7 +33,22 @@
 </form>
 
 <% @answers.each do |answer| %>
-		<p><%= answer.text %></p>
+	<ul>
+		<li><%= answer.text %></li>
+		<!-- list of the comments -->
+		<% answer.comments.each do |comment| %>
+			<ul>
+				<li><%= comment.text %></li>
+			</ul>
+		<% end %>
 		<!-- comments for the answer -->
-		<!-- use comment partial here -->
+		<form id="Answer-comments" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+			<p>Comment:</p>
+			<textarea name="comment[text]"></textarea><br>
+			<input type="submit" value="Comment">
+		</form>	
+
+		
+				
+	</ul>
 <% end %>
