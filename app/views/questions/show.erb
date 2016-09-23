@@ -53,13 +53,12 @@
 			</form>	
 		<% end %>		
 	</ul>
+<% end %>
 
-	<% if session["user"] %>
+<% if session["user"] %>
 		<form id="Answers" action="/questions/<%= @question.id %>/answers" method="post">
 			<p>Answer:</p>
 			<textarea name="answer[text]"></textarea><br>
 			<input type="submit" value="Post">
 		</form>
 	<% end %>
-
-<% end %>
