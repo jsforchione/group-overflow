@@ -2,7 +2,6 @@
 
 Rails full-stack application displays questions and allows users to post answers, upvote or downvote questions and answers, as well as comment on either. 
 
-![homepage] ()
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -56,7 +55,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 * **Israel Matos** - [Github](https://github.com/everysum1)
 * **Jessica Forchione** - [Github](https://github.com/jsforchione)
-* **Ilaria Varriale** - [Github](https://github.com/ilaria)
+* **Ilaria Varriale** - [Github](https://github.com/HigitusFigitus)
 * **Rusty Hutto** - [Github](https://github.com/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
@@ -68,6 +67,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 Thank you for all your help!!
-* Jeff Tchang
-* Dave Cheng
-* Sally Park
+* Todd Seller
+* Paul Ozag
