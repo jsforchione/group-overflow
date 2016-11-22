@@ -2,7 +2,7 @@
 
 Rails full-stack application displays questions and allows users to post answers, upvote or downvote questions and answers, as well as comment on either. 
 
-![homepage] (https://github.com/everysum1/Frais/blob/development/app/assets/images/FraisHomepage.png)
+![homepage] ()
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
